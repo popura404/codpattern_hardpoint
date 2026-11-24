@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="GPL-3.0-only"
+
+[[mods]]
+modId="codpattern_hardpoint"
+version="${mod_version}"
+displayName="COD Pattern Hardpoint"
+description='''Team Hardpoint matches with map-defined objective zones for COD Pattern.'''
+
+[[dependencies.codpattern_hardpoint]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.0,48)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.codpattern_hardpoint]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.codpattern_hardpoint]]
+modId="codpattern"
+mandatory=true
+versionRange="[${codpattern_version}]"
+ordering="AFTER"
+side="BOTH"

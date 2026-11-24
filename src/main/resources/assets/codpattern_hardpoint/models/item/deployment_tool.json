@@ -1,0 +1,246 @@
+{
+  "parent": "minecraft:block/block",
+  "gui_light": "front",
+  "textures": {
+    "case": "minecraft:block/purpur_block",
+    "grip": "minecraft:block/gray_concrete",
+    "glass": "minecraft:block/black_concrete",
+    "ink": "minecraft:block/white_concrete",
+    "glow": "minecraft:block/quartz_block_top",
+    "particle": "#case"
+  },
+  "display": {
+    "gui": {
+      "rotation": [12, 165, -7],
+      "translation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "firstperson_righthand": {
+      "rotation": [0, 192, -8],
+      "translation": [-1, 2, 1],
+      "scale": [0.83, 0.83, 0.83]
+    },
+    "firstperson_lefthand": {
+      "rotation": [0, 192, -8],
+      "translation": [-1, 2, 1],
+      "scale": [0.83, 0.83, 0.83]
+    },
+    "thirdperson_righthand": {
+      "rotation": [0, 180, 5],
+      "translation": [0, 2, 1],
+      "scale": [0.78, 0.78, 0.78]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0, 180, 5],
+      "translation": [0, 2, 1],
+      "scale": [0.78, 0.78, 0.78]
+    },
+    "ground": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 2, 0],
+      "scale": [0.62, 0.62, 0.62]
+    },
+    "fixed": {
+      "rotation": [0, 180, 0],
+      "translation": [0, 0, 0],
+      "scale": [0.95, 0.95, 0.95]
+    }
+  },
+  "elements": [
+    {
+      "name": "Tablet chassis",
+      "from": [1.4, 4.4, 7],
+      "to": [14.6, 11.6, 8.55],
+      "faces": {
+        "down": {"texture": "#case"},
+        "up": {"texture": "#case"},
+        "north": {"texture": "#case"},
+        "south": {"texture": "#case"},
+        "west": {"texture": "#case"},
+        "east": {"texture": "#case"}
+      }
+    },
+    {
+      "name": "Left handgrip",
+      "from": [0.8, 4, 6.75],
+      "to": [2.35, 12, 8.75],
+      "faces": {
+        "down": {"texture": "#grip"},
+        "up": {"texture": "#grip"},
+        "north": {"texture": "#grip"},
+        "south": {"texture": "#grip"},
+        "west": {"texture": "#grip"},
+        "east": {"texture": "#grip"}
+      }
+    },
+    {
+      "name": "Right handgrip",
+      "from": [13.65, 4, 6.75],
+      "to": [15.2, 12, 8.75],
+      "faces": {
+        "down": {"texture": "#grip"},
+        "up": {"texture": "#grip"},
+        "north": {"texture": "#grip"},
+        "south": {"texture": "#grip"},
+        "west": {"texture": "#grip"},
+        "east": {"texture": "#grip"}
+      }
+    },
+    {
+      "name": "Front glass",
+      "from": [2.7, 4.95, 6.79],
+      "to": [13.3, 11.05, 7.01],
+      "faces": {
+        "down": {"texture": "#glass"},
+        "up": {"texture": "#glass"},
+        "north": {"texture": "#glass"},
+        "south": {"texture": "#glass"},
+        "west": {"texture": "#glass"},
+        "east": {"texture": "#glass"}
+      }
+    },
+    {
+      "name": "Clipped stylus",
+      "from": [4.4, 11.62, 7.47],
+      "to": [10.7, 12.04, 8.03],
+      "faces": {
+        "down": {"texture": "#ink"},
+        "up": {"texture": "#ink"},
+        "north": {"texture": "#ink"},
+        "south": {"texture": "#ink"},
+        "west": {"texture": "#ink"},
+        "east": {"texture": "#ink"}
+      }
+    },
+    {
+      "name": "Stylus clip",
+      "from": [9.7, 11.45, 7.31],
+      "to": [10.13, 12.13, 8.12],
+      "faces": {
+        "down": {"texture": "#case"},
+        "up": {"texture": "#case"},
+        "north": {"texture": "#case"},
+        "south": {"texture": "#case"},
+        "west": {"texture": "#case"},
+        "east": {"texture": "#case"}
+      }
+    },
+    {
+      "name": "Upper left bracket",
+      "from": [3.4, 9.94, 6.7],
+      "to": [5.15, 10.35, 6.795],
+      "faces": {
+        "down": {"texture": "#glow"},
+        "up": {"texture": "#glow"},
+        "north": {"texture": "#glow"},
+        "south": {"texture": "#glow"},
+        "west": {"texture": "#glow"},
+        "east": {"texture": "#glow"}
+      }
+    },
+    {
+      "name": "Upper left bracket leg",
+      "from": [3.4, 8.74, 6.7],
+      "to": [3.81, 9.94, 6.795],
+      "faces": {
+        "down": {"texture": "#glow"},
+        "up": {"texture": "#glow"},
+        "north": {"texture": "#glow"},
+        "south": {"texture": "#glow"},
+        "west": {"texture": "#glow"},
+        "east": {"texture": "#glow"}
+      }
+    },
+    {
+      "name": "Lower right bracket",
+      "from": [10.9, 5.62, 6.7],
+      "to": [12.65, 6.03, 6.795],
+      "faces": {
+        "down": {"texture": "#glow"},
+        "up": {"texture": "#glow"},
+        "north": {"texture": "#glow"},
+        "south": {"texture": "#glow"},
+        "west": {"texture": "#glow"},
+        "east": {"texture": "#glow"}
+      }
+    },
+    {
+      "name": "Lower right bracket leg",
+      "from": [12.24, 6.03, 6.7],
+      "to": [12.65, 7.24, 6.795],
+      "faces": {
+        "down": {"texture": "#glow"},
+        "up": {"texture": "#glow"},
+        "north": {"texture": "#glow"},
+        "south": {"texture": "#glow"},
+        "west": {"texture": "#glow"},
+        "east": {"texture": "#glow"}
+      }
+    },
+    {
+      "name": "First hill",
+      "from": [5.18, 6.37, 6.7],
+      "to": [6.14, 7.33, 6.795],
+      "faces": {
+        "down": {"texture": "#ink"},
+        "up": {"texture": "#ink"},
+        "north": {"texture": "#ink"},
+        "south": {"texture": "#ink"},
+        "west": {"texture": "#ink"},
+        "east": {"texture": "#ink"}
+      }
+    },
+    {
+      "name": "Route to next hill",
+      "from": [6.14, 6.71, 6.7],
+      "to": [8.22, 7, 6.795],
+      "faces": {
+        "down": {"texture": "#case"},
+        "up": {"texture": "#case"},
+        "north": {"texture": "#case"},
+        "south": {"texture": "#case"},
+        "west": {"texture": "#case"},
+        "east": {"texture": "#case"}
+      }
+    },
+    {
+      "name": "Route bend",
+      "from": [7.93, 7, 6.7],
+      "to": [8.22, 8.89, 6.795],
+      "faces": {
+        "down": {"texture": "#case"},
+        "up": {"texture": "#case"},
+        "north": {"texture": "#case"},
+        "south": {"texture": "#case"},
+        "west": {"texture": "#case"},
+        "east": {"texture": "#case"}
+      }
+    },
+    {
+      "name": "Route to second hill",
+      "from": [8.22, 8.6, 6.7],
+      "to": [10.18, 8.89, 6.795],
+      "faces": {
+        "down": {"texture": "#case"},
+        "up": {"texture": "#case"},
+        "north": {"texture": "#case"},
+        "south": {"texture": "#case"},
+        "west": {"texture": "#case"},
+        "east": {"texture": "#case"}
+      }
+    },
+    {
+      "name": "Second hill",
+      "from": [10.18, 8.28, 6.7],
+      "to": [11.14, 9.24, 6.795],
+      "faces": {
+        "down": {"texture": "#glow"},
+        "up": {"texture": "#glow"},
+        "north": {"texture": "#glow"},
+        "south": {"texture": "#glow"},
+        "west": {"texture": "#glow"},
+        "east": {"texture": "#glow"}
+      }
+    }
+  ]
+}

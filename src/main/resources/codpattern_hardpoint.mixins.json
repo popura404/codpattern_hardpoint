@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.cdp.codpattern.hardpoint.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": ["HardpointRefitMixin", "HardpointShootMixin", "HardpointThrowableMixin"],
+  "client": ["HardpointSettlementMixin", "HardpointOpeningAccessor", "HardpointBlackoutCleanupMixin", "HardpointThrowableInputMixin"],
+  "injectors": { "defaultRequire": 1 }
+}

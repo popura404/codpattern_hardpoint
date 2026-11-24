@@ -1,0 +1,85 @@
+import java.security.DigestInputStream
+import java.security.MessageDigest
+
+plugins {
+    id 'net.minecraftforge.gradle' version '6.0.54'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.2.0.7-dev-SNAPSHOT'
+}
+
+group = 'com.cdp.codpattern.hardpoint'
+version = mod_version
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', layout.buildDirectory.file('createSrgToMcp/output.srg').get().asFile.absolutePath
+            arg '-mixin.config=codpattern_hardpoint.mixins.json'
+            mods {
+                codpattern_hardpoint { source sourceSets.main }
+            }
+        }
+        client { }
+        server { args '--nogui' }
+        gameTestServer {
+            workingDirectory layout.buildDirectory.dir('gametest/run').get().asFile
+            jvmArgs '--add-modules=jdk.random'
+            property 'forge.enabledGameTestNamespaces', 'codpattern_hardpoint'
+        }
+    }
+}
+
+def coreJar = file(findProperty('codpatternJar') ?: "../codPattern/build/libs/codpattern-${codpattern_version}.jar")
+if (coreJar.isFile()) {
+    def digest = MessageDigest.getInstance('SHA-512')
+    coreJar.withInputStream { stream ->
+        new DigestInputStream(stream, digest).transferTo(OutputStream.nullOutputStream())
+    }
+    if (digest.digest().encodeHex().toString() != codpattern_sha512) {
+        throw new GradleException("The local CDP JAR differs from Modrinth release ${codpattern_modrinth_version}: ${coreJar}")
+    }
+}
+repositories {
+    if (coreJar.isFile()) {
+        ivy {
+            name = 'localCodPattern'
+            url = coreJar.parentFile.toURI()
+            patternLayout { artifact coreJar.name }
+            metadataSources { artifact() }
+            content { includeVersion 'local.codpattern', 'codpattern', codpattern_version }
+        }
+    }
+    maven { url = 'https://www.cursemaven.com'; content { includeGroup 'curse.maven' } }
+    maven { url = 'https://api.modrinth.com/maven'; content { includeGroup 'maven.modrinth' } }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
+    implementation fg.deobf(coreJar.isFile() ? "local.codpattern:codpattern:${codpattern_version}"
+            : "maven.modrinth:Pkr974dO:${codpattern_modrinth_version}")
+    implementation fg.deobf('curse.maven:timeless-and-classics-zero-1028108:6654541-sources-6654543')
+}
+
+tasks.named('processResources', ProcessResources) {
+    inputs.properties(mod_version: version, codpattern_version: codpattern_version)
+    filesMatching('META-INF/mods.toml') {
+        expand(mod_version: version, codpattern_version: codpattern_version)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.named('jar') {
+    manifest.attributes('MixinConfigs': 'codpattern_hardpoint.mixins.json')
+    finalizedBy 'reobfJar'
+}
+
+tasks.register('checkHardpointRules', JavaExec) {
+    group = 'verification'
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.cdp.codpattern.hardpoint.room.HardpointRulesTest'
+}
+tasks.named('check') { dependsOn 'checkHardpointRules' }
